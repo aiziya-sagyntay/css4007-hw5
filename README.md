@@ -11,7 +11,7 @@ python --version
 python -m pip install -r requirements.txt
 ```
 
-Top-level dependencies are pinned in `requirements.txt`; their transitive dependencies are resolved by pip. The intended runtime is Python 3.11 in GitHub Actions or Google Colab. If using Colab, upload `HW5_GitHub_Colab.ipynb`; it creates the entire project automatically.
+Top-level dependencies are pinned in `requirements.txt`; their transitive dependencies are resolved by pip. Tested with Python 3.13.18 in Google Colab and Python 3.11 in GitHub Actions. Run this repository directly using the CLI commands below. The separate Colab notebook is optional and is not included in this repository.
 
 ## 2. Configure a model for REAL demonstrations
 
