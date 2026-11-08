@@ -87,11 +87,13 @@ On every turn the `load_user_memory` node reads preferences. User messages from 
 | Situation | Command | Log file | What actually happened |
 | --- | --- | --- | --- |
 | Current thread reference | `python -m helpdesk.cli run-scenarios --mode real --ids S10` | `outputs/S10.json` | Result=PASS; saved language=not set; prior messages in this thread=4 |
-| Close process and restart | `python -m helpdesk.cli run-scenarios --mode real --ids S11` | `outputs/S11.json` | Result=PASS; saved language=Kazakh; prior messages in this thread=4; process PIDs=[11238, 11273] |
-| Same user, a new thread | `python -m helpdesk.cli run-scenarios --mode real --ids S12` | `outputs/S12.json` | Result=PASS; saved language=Kazakh; prior messages in this thread=0; process PIDs=[5237, 5268] |
+| Close process and restart | `python -m helpdesk.cli run-scenarios --mode real --ids S11` | `outputs/S11.json` | Result=PASS; saved language=Kazakh; prior messages in this thread=4; process PIDs=[27695, 27726] |
+| Same user, a new thread | `python -m helpdesk.cli run-scenarios --mode real --ids S12` | `outputs/S12.json` | Result=PASS; saved language=Kazakh; prior messages in this thread=0; process PIDs=[26911, 26936] |
 | Different user | `python -m helpdesk.cli run-scenarios --mode real --ids S13` | `outputs/S13.json` | Result=PASS; saved language=not set; prior messages in this thread=0 |
 
 Looking up troubleshooting steps in `helpdesk.json` is **retrieval** from an external reference file. Remembering the user's preference is **user memory** persisted by user ID; conversation messages are **thread memory** persisted by the checkpointer. Neither reference retrieval nor user memory is supplied by another user's conversation.
+
+### Literal reference: `I already tried that`\n\nFirst prompt: I cannot connect to Wi-Fi. Find the local Wi-Fi instructions and recommend only the first step.\n\nFirst reply: To connect to the Wi-Fi, the first step is to **check that Wi-Fi is enabled and airplane mode is off**.\n\nLiteral follow-up: I already tried that.\n\nActual follow-up reply: Which step did you try after checking that Wi-Fi is enabled and airplane mode is off?\n\nPrior checkpoint messages: 4. Source: LangGraph SQLite thread memory; guide lookup: `data/helpdesk.json` (retrieval); language preference: `preferences.sqlite` (user memory). Raw evidence: `outputs/EXTRA_MEMORY_REFERENCE.json`.
 
 ## Part 4 — Reproduction, tests and CI
 
@@ -114,14 +116,14 @@ Run all fourteen: `python -m helpdesk.cli run-scenarios --mode real`, and regene
 | S03 — Unsupported request | `--ids S03` | `outputs/S03.json` | PASS; Is your question about Wi-Fi or a password? |
 | S04 — Two topics before the graph change | `--ids S04` | `outputs/S04.json` | PASS; GUIDE-WIFI: Check that Wi-Fi is enabled and airplane mode is off. Select th |
 | S05 — Two topics after adding clarification | `--ids S05` | `outputs/S05.json` | PASS; Is the issue connecting to Wi-Fi, or recovering an account password? Which  |
-| S06 — Instructions then local ticket | `--ids S06` | `outputs/S06.json` | PASS; Here are the Wi-Fi troubleshooting steps:  1. Check that Wi-Fi is enabled a / The Wi-Fi service is operational. I've prepared a ticket draft regarding yo |
-| S07 — The same request during a Wi-Fi outage | `--ids S07` | `outputs/S07.json` | PASS; The demo Wi-Fi service is currently experiencing an outage and is unavailab |
-| S08 — Status source unavailable | `--ids S08` | `outputs/S08.json` | PASS; The Wi-Fi status is currently unknown, meaning I cannot confirm if it is do |
-| S09 — Missing ticket details | `--ids S09` | `outputs/S09.json` | PASS; Could you please provide the specific problem you're experiencing and any s / I've drafted a support ticket for your Wi-Fi issue. Here are the details:   |
-| S10 — Use the current conversation | `--ids S10` | `outputs/S10.json` | PASS; The demo Wi-Fi service is operational, with no reported outages.   Would yo / You mentioned that you enabled Wi-Fi and forgot the saved network, but reco |
-| S11 — Persist and recall after restart | `--ids S11` | `outputs/S11.json` | PASS; Wi-Fi қызметі қазіргі уақытта жұмыс істеп тұр. Енді сіздің мәселеңіз бойынш / Біз Wi-Fi мәселесін талқыладық. Сіз Wi-Fi-ды қосып, қайта қосылуға тырыстың |
-| S12 — Preference across threads without replay | `--ids S12` | `outputs/S12.json` | PASS; Wi-Fi қызметі жұмыс істеп тұр. Енді сізге Wi-Fi мәселесін шешу үшін нұсқаул / Сіз мені қазақ тілінде жауап беруімді сұрадыңыз. Мен Wi-Fi, парольді қалпын |
-| S13 — Do not share memory between users | `--ids S13` | `outputs/S13.json` | PASS; Wi-Fi мәселесін шешу үшін мына нұсқауларды орындап көріңіз:  1. Wi-Fi қосыл / No, you haven't mentioned a preferred language or a previous problem in thi |
+| S06 — Instructions then local ticket | `--ids S06` | `outputs/S06.json` | PASS; Here are the Wi-Fi troubleshooting steps:  1. Check that Wi-Fi is enabled a / The Wi-Fi service is operational, and I have prepared a ticket draft regard |
+| S07 — The same request during a Wi-Fi outage | `--ids S07` | `outputs/S07.json` | PASS; The demo Wi-Fi service is currently experiencing an outage across campus, a |
+| S08 — Status source unavailable | `--ids S08` | `outputs/S08.json` | PASS; The Wi-Fi status is currently unknown, meaning neither an outage nor operat |
+| S09 — Missing ticket details | `--ids S09` | `outputs/S09.json` | PASS; Could you please provide the details of the problem you're experiencing and / I've created a draft for your support ticket regarding the Wi-Fi issue. Her |
+| S10 — Use the current conversation | `--ids S10` | `outputs/S10.json` | PASS; The demo Wi-Fi service is currently operational, with no reported outages.  / You mentioned that you enabled Wi-Fi and forgot the saved network, but reco |
+| S11 — Persist and recall after restart | `--ids S11` | `outputs/S11.json` | PASS; Wi-Fi қызметінің статусы: жұмыс істеп тұр. Яғни, ешқандай ақау туралы хабар / Біз Wi-Fi мәселесін талқыладық. Сіз Wi-Fi-ды қосып, қайта қосылуға тырысқан |
+| S12 — Preference across threads without replay | `--ids S12` | `outputs/S12.json` | PASS; Сіздің тілдік таңдауыңызды ескеремін: жауаптар қазақ тілінде болады. Wi-Fi  / Сіз мені қазақ тілінде жауап беруімді сұрадыңыз. Мен Wi-Fi, парольді қалпын |
+| S13 — Do not share memory between users | `--ids S13` | `outputs/S13.json` | PASS; Сіздің тілдік таңдауыңызды ескеремін: жауаптар қазақ тілінде болады. Wi-Fi  / You haven't mentioned a preferred language or reported a previous problem i |
 | S14 — Password recovery outage | `--ids S14` | `outputs/S14.json` | PASS; The password recovery service is currently experiencing an outage and is un |
 
 ## AI tool disclosure

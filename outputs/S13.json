@@ -27,12 +27,12 @@
     {
       "action": "process_start",
       "segment": 1,
-      "pid": 5295,
+      "pid": 26963,
       "events": 2
     },
     {
       "action": "process_exit",
-      "pid": 5295
+      "pid": 26963
     }
   ],
   "messages": [
@@ -42,7 +42,7 @@
       "profile": "normal",
       "mode": "real",
       "model": "gpt-4o-mini",
-      "final_reply": "Wi-Fi мәселесін шешу үшін мына нұсқауларды орындап көріңіз:\n\n1. Wi-Fi қосылғанына және ұшақ режимінің өшірілгеніне көз жеткізіңіз.\n2. \"Campus-Demo\" желісін таңдаңыз.\n3. Егер қосылу сәтсіз болса, сақталған желіні ұмытуды және қайта қосылуды байқап көріңіз.\n4. Мәселе шешілмесе, қызмет статусын тексеріңіз.\n\nЕгер мәселе шешілмесе, мен сіз үшін билет дайындауға көмектесемін. Сіз қандай қадамдарды орындадыңыз?",
+      "final_reply": "Сіздің тілдік таңдауыңызды ескеремін: жауаптар қазақ тілінде болады. Wi-Fi мәселеңіз туралы айтып берсеңіз, мен көмектесуге дайынмын.",
       "ticket_files": [],
       "preferred_language": "Kazakh",
       "loop_limit_hit": false,
@@ -68,103 +68,12 @@
           "messages_added": [
             {
               "type": "ai",
-              "content": "Сіз Wi-Fi мәселесімен бетпе-бет келдіңіз. Мен Wi-Fi қызметінің статусын тексеремін. Бір сәт күтіңіз.",
-              "model_tool_requests": [
-                {
-                  "name": "check_service_status",
-                  "args": {
-                    "service": "wifi"
-                  },
-                  "id": "call_kY8m0H5V6AA9BWfDHDQY3B10"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "node": "tools",
-          "state_updates": {},
-          "messages_added": [
-            {
-              "type": "tool",
-              "content": "{\"service\": \"wifi\", \"status\": \"operational\", \"message\": \"The demo Wi-Fi service has no reported outage.\", \"profile\": \"normal\", \"source\": \"data/service_status.json\"}",
-              "tool_name": "check_service_status",
-              "tool_result": {
-                "service": "wifi",
-                "status": "operational",
-                "message": "The demo Wi-Fi service has no reported outage.",
-                "profile": "normal",
-                "source": "data/service_status.json"
-              },
-              "tool_call_id": "call_kY8m0H5V6AA9BWfDHDQY3B10"
-            }
-          ],
-          "sources": [
-            "data/service_status.json"
-          ]
-        },
-        {
-          "node": "assistant",
-          "state_updates": {
-            "rounds": 2
-          },
-          "messages_added": [
-            {
-              "type": "ai",
-              "content": "Wi-Fi қызметі жұмыс істеп тұр. Енді сіздің мәселеңізді шешу үшін нұсқаулықтар іздеймін. Бір сәт күтіңіз.",
-              "model_tool_requests": [
-                {
-                  "name": "find_instructions",
-                  "args": {
-                    "topic": "wifi"
-                  },
-                  "id": "call_lzQjnkm5tHSftcHTX0OLFmRB"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "node": "tools",
-          "state_updates": {},
-          "messages_added": [
-            {
-              "type": "tool",
-              "content": "{\"topic\": \"wifi\", \"instruction_id\": \"GUIDE-WIFI\", \"title\": \"Connect to the practice campus network\", \"steps\": [\"Check that Wi-Fi is enabled and airplane mode is off.\", \"Select the fictional Campus-Demo network.\", \"If connection fails, forget the saved network and try connecting again.\", \"If the problem remains, check the service status before preparing a ticket.\"], \"source\": \"data/helpdesk.json\"}",
-              "tool_name": "find_instructions",
-              "tool_result": {
-                "topic": "wifi",
-                "instruction_id": "GUIDE-WIFI",
-                "title": "Connect to the practice campus network",
-                "steps": [
-                  "Check that Wi-Fi is enabled and airplane mode is off.",
-                  "Select the fictional Campus-Demo network.",
-                  "If connection fails, forget the saved network and try connecting again.",
-                  "If the problem remains, check the service status before preparing a ticket."
-                ],
-                "source": "data/helpdesk.json"
-              },
-              "tool_call_id": "call_lzQjnkm5tHSftcHTX0OLFmRB"
-            }
-          ],
-          "sources": [
-            "data/helpdesk.json"
-          ]
-        },
-        {
-          "node": "assistant",
-          "state_updates": {
-            "rounds": 3
-          },
-          "messages_added": [
-            {
-              "type": "ai",
-              "content": "Wi-Fi мәселесін шешу үшін мына нұсқауларды орындап көріңіз:\n\n1. Wi-Fi қосылғанына және ұшақ режимінің өшірілгеніне көз жеткізіңіз.\n2. \"Campus-Demo\" желісін таңдаңыз.\n3. Егер қосылу сәтсіз болса, сақталған желіні ұмытуды және қайта қосылуды байқап көріңіз.\n4. Мәселе шешілмесе, қызмет статусын тексеріңіз.\n\nЕгер мәселе шешілмесе, мен сіз үшін билет дайындауға көмектесемін. Сіз қандай қадамдарды орындадыңыз?"
+              "content": "Сіздің тілдік таңдауыңызды ескеремін: жауаптар қазақ тілінде болады. Wi-Fi мәселеңіз туралы айтып берсеңіз, мен көмектесуге дайынмын."
             }
           ]
         }
       ],
-      "pid": 5295,
+      "pid": 26963,
       "published_ticket_files": []
     },
     {
@@ -173,7 +82,7 @@
       "profile": "normal",
       "mode": "real",
       "model": "gpt-4o-mini",
-      "final_reply": "No, you haven't mentioned a preferred language or a previous problem in this conversation. How can I assist you today?",
+      "final_reply": "You haven't mentioned a preferred language or reported a previous problem in this conversation. If you have a preference or a specific issue you'd like to discuss, please let me know!",
       "ticket_files": [],
       "preferred_language": "not set",
       "loop_limit_hit": false,
@@ -199,69 +108,20 @@
           "messages_added": [
             {
               "type": "ai",
-              "content": "No, you haven't mentioned a preferred language or a previous problem in this conversation. How can I assist you today?"
+              "content": "You haven't mentioned a preferred language or reported a previous problem in this conversation. If you have a preference or a specific issue you'd like to discuss, please let me know!"
             }
           ]
         }
       ],
-      "pid": 5295,
+      "pid": 26963,
       "published_ticket_files": []
     }
   ],
-  "tool_call_and_result_sequence": [
-    {
-      "event": "model_requested",
-      "name": "check_service_status",
-      "args": {
-        "service": "wifi"
-      },
-      "id": "call_kY8m0H5V6AA9BWfDHDQY3B10"
-    },
-    {
-      "event": "tool_returned",
-      "name": "check_service_status",
-      "result": {
-        "service": "wifi",
-        "status": "operational",
-        "message": "The demo Wi-Fi service has no reported outage.",
-        "profile": "normal",
-        "source": "data/service_status.json"
-      }
-    },
-    {
-      "event": "model_requested",
-      "name": "find_instructions",
-      "args": {
-        "topic": "wifi"
-      },
-      "id": "call_lzQjnkm5tHSftcHTX0OLFmRB"
-    },
-    {
-      "event": "tool_returned",
-      "name": "find_instructions",
-      "result": {
-        "topic": "wifi",
-        "instruction_id": "GUIDE-WIFI",
-        "title": "Connect to the practice campus network",
-        "steps": [
-          "Check that Wi-Fi is enabled and airplane mode is off.",
-          "Select the fictional Campus-Demo network.",
-          "If connection fails, forget the saved network and try connecting again.",
-          "If the problem remains, check the service status before preparing a ticket."
-        ],
-        "source": "data/helpdesk.json"
-      }
-    }
-  ],
+  "tool_call_and_result_sequence": [],
   "evaluation": {
     "passed": true,
-    "tool_results": [
-      "check_service_status",
-      "find_instructions"
-    ],
-    "observed_statuses": [
-      "operational"
-    ],
+    "tool_results": [],
+    "observed_statuses": [],
     "ticket_count": 0,
     "reason": "Automatic fixture check; inspect the replies and traces for content accuracy."
   },

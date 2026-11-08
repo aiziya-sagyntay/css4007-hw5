@@ -1,0 +1,164 @@
+{
+  "title": "Literal contextual memory demonstration",
+  "mode": "real",
+  "model": "gpt-4o-mini",
+  "user_id": "demo-user-a",
+  "thread_id": "literal-that-thread",
+  "messages": [
+    {
+      "user_id": "demo-user-a",
+      "thread_id": "literal-that-thread",
+      "profile": "normal",
+      "mode": "real",
+      "model": "gpt-4o-mini",
+      "final_reply": "To connect to the Wi-Fi, the first step is to **check that Wi-Fi is enabled and airplane mode is off**.",
+      "ticket_files": [],
+      "preferred_language": "not set",
+      "loop_limit_hit": false,
+      "trace": [
+        {
+          "node": "INPUT",
+          "message": "I cannot connect to Wi-Fi. Find the local Wi-Fi instructions and recommend only the first step.",
+          "previous_conversation_messages": 0,
+          "memory_source": "new_conversation"
+        },
+        {
+          "node": "load_user_memory",
+          "state_updates": {
+            "preferred_language": "not set"
+          },
+          "memory_source": "preferences.sqlite / user_id=demo-user-a"
+        },
+        {
+          "node": "assistant",
+          "state_updates": {
+            "rounds": 1
+          },
+          "messages_added": [
+            {
+              "type": "ai",
+              "content": "",
+              "model_tool_requests": [
+                {
+                  "name": "find_instructions",
+                  "args": {
+                    "topic": "wifi"
+                  },
+                  "id": "call_nk15uPAIH91MmRwHq1do3GXV"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node": "tools",
+          "state_updates": {},
+          "messages_added": [
+            {
+              "type": "tool",
+              "content": "{\"topic\": \"wifi\", \"instruction_id\": \"GUIDE-WIFI\", \"title\": \"Connect to the practice campus network\", \"steps\": [\"Check that Wi-Fi is enabled and airplane mode is off.\", \"Select the fictional Campus-Demo network.\", \"If connection fails, forget the saved network and try connecting again.\", \"If the problem remains, check the service status before preparing a ticket.\"], \"source\": \"data/helpdesk.json\"}",
+              "tool_name": "find_instructions",
+              "tool_result": {
+                "topic": "wifi",
+                "instruction_id": "GUIDE-WIFI",
+                "title": "Connect to the practice campus network",
+                "steps": [
+                  "Check that Wi-Fi is enabled and airplane mode is off.",
+                  "Select the fictional Campus-Demo network.",
+                  "If connection fails, forget the saved network and try connecting again.",
+                  "If the problem remains, check the service status before preparing a ticket."
+                ],
+                "source": "data/helpdesk.json"
+              },
+              "tool_call_id": "call_nk15uPAIH91MmRwHq1do3GXV"
+            }
+          ],
+          "sources": [
+            "data/helpdesk.json"
+          ]
+        },
+        {
+          "node": "assistant",
+          "state_updates": {
+            "rounds": 2
+          },
+          "messages_added": [
+            {
+              "type": "ai",
+              "content": "To connect to the Wi-Fi, the first step is to **check that Wi-Fi is enabled and airplane mode is off**."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "user_id": "demo-user-a",
+      "thread_id": "literal-that-thread",
+      "profile": "normal",
+      "mode": "real",
+      "model": "gpt-4o-mini",
+      "final_reply": "Which step did you try after checking that Wi-Fi is enabled and airplane mode is off?",
+      "ticket_files": [],
+      "preferred_language": "not set",
+      "loop_limit_hit": false,
+      "trace": [
+        {
+          "node": "INPUT",
+          "message": "I already tried that.",
+          "previous_conversation_messages": 4,
+          "memory_source": "langgraph_sqlite_checkpointer"
+        },
+        {
+          "node": "load_user_memory",
+          "state_updates": {
+            "preferred_language": "not set"
+          },
+          "memory_source": "preferences.sqlite / user_id=demo-user-a"
+        },
+        {
+          "node": "assistant",
+          "state_updates": {
+            "rounds": 1
+          },
+          "messages_added": [
+            {
+              "type": "ai",
+              "content": "Which step did you try after checking that Wi-Fi is enabled and airplane mode is off?"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reference_retrieval": {
+    "source": "data/helpdesk.json",
+    "results": [
+      {
+        "topic": "wifi",
+        "instruction_id": "GUIDE-WIFI",
+        "title": "Connect to the practice campus network",
+        "steps": [
+          "Check that Wi-Fi is enabled and airplane mode is off.",
+          "Select the fictional Campus-Demo network.",
+          "If connection fails, forget the saved network and try connecting again.",
+          "If the problem remains, check the service status before preparing a ticket."
+        ],
+        "source": "data/helpdesk.json"
+      }
+    ]
+  },
+  "conversation_memory": {
+    "source": "LangGraph SQLite checkpoint",
+    "previous_messages": 4
+  },
+  "user_memory": {
+    "source": "preferences.sqlite",
+    "preferred_language": "not set"
+  },
+  "checks": {
+    "guide_retrieved": true,
+    "previous_messages_loaded": true,
+    "no_unrequested_ticket": true,
+    "no_loop_limit": true
+  }
+}

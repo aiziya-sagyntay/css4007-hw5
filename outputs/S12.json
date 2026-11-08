@@ -32,12 +32,12 @@
     {
       "action": "process_start",
       "segment": 1,
-      "pid": 5237,
+      "pid": 26911,
       "events": 1
     },
     {
       "action": "process_exit",
-      "pid": 5237
+      "pid": 26911
     },
     {
       "action": "restart_process",
@@ -47,12 +47,12 @@
     {
       "action": "process_start",
       "segment": 2,
-      "pid": 5268,
+      "pid": 26936,
       "events": 1
     },
     {
       "action": "process_exit",
-      "pid": 5268
+      "pid": 26936
     }
   ],
   "messages": [
@@ -62,7 +62,7 @@
       "profile": "normal",
       "mode": "real",
       "model": "gpt-4o-mini",
-      "final_reply": "Wi-Fi қызметі жұмыс істеп тұр. Енді сізге Wi-Fi мәселесін шешу үшін нұсқаулық қажет пе?",
+      "final_reply": "Сіздің тілдік таңдауыңызды ескеремін: жауаптар қазақ тілінде болады. Wi-Fi мәселеңіз туралы айтып берсеңіз, мен көмектесуге дайынмын.",
       "ticket_files": [],
       "preferred_language": "Kazakh",
       "loop_limit_hit": false,
@@ -88,55 +88,12 @@
           "messages_added": [
             {
               "type": "ai",
-              "content": "Сіз Wi-Fi мәселесімен бетпе-бет келдіңіз. Мен Wi-Fi қызметінің статусын тексеремін. Бір сәт күтіңіз.",
-              "model_tool_requests": [
-                {
-                  "name": "check_service_status",
-                  "args": {
-                    "service": "wifi"
-                  },
-                  "id": "call_XySs1NPRtlWbHTHIDJGMiFx1"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "node": "tools",
-          "state_updates": {},
-          "messages_added": [
-            {
-              "type": "tool",
-              "content": "{\"service\": \"wifi\", \"status\": \"operational\", \"message\": \"The demo Wi-Fi service has no reported outage.\", \"profile\": \"normal\", \"source\": \"data/service_status.json\"}",
-              "tool_name": "check_service_status",
-              "tool_result": {
-                "service": "wifi",
-                "status": "operational",
-                "message": "The demo Wi-Fi service has no reported outage.",
-                "profile": "normal",
-                "source": "data/service_status.json"
-              },
-              "tool_call_id": "call_XySs1NPRtlWbHTHIDJGMiFx1"
-            }
-          ],
-          "sources": [
-            "data/service_status.json"
-          ]
-        },
-        {
-          "node": "assistant",
-          "state_updates": {
-            "rounds": 2
-          },
-          "messages_added": [
-            {
-              "type": "ai",
-              "content": "Wi-Fi қызметі жұмыс істеп тұр. Енді сізге Wi-Fi мәселесін шешу үшін нұсқаулық қажет пе?"
+              "content": "Сіздің тілдік таңдауыңызды ескеремін: жауаптар қазақ тілінде болады. Wi-Fi мәселеңіз туралы айтып берсеңіз, мен көмектесуге дайынмын."
             }
           ]
         }
       ],
-      "pid": 5237,
+      "pid": 26911,
       "published_ticket_files": []
     },
     {
@@ -176,39 +133,15 @@
           ]
         }
       ],
-      "pid": 5268,
+      "pid": 26936,
       "published_ticket_files": []
     }
   ],
-  "tool_call_and_result_sequence": [
-    {
-      "event": "model_requested",
-      "name": "check_service_status",
-      "args": {
-        "service": "wifi"
-      },
-      "id": "call_XySs1NPRtlWbHTHIDJGMiFx1"
-    },
-    {
-      "event": "tool_returned",
-      "name": "check_service_status",
-      "result": {
-        "service": "wifi",
-        "status": "operational",
-        "message": "The demo Wi-Fi service has no reported outage.",
-        "profile": "normal",
-        "source": "data/service_status.json"
-      }
-    }
-  ],
+  "tool_call_and_result_sequence": [],
   "evaluation": {
     "passed": true,
-    "tool_results": [
-      "check_service_status"
-    ],
-    "observed_statuses": [
-      "operational"
-    ],
+    "tool_results": [],
+    "observed_statuses": [],
     "ticket_count": 0,
     "reason": "Automatic fixture check; inspect the replies and traces for content accuracy."
   },

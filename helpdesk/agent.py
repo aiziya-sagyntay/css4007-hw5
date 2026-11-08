@@ -71,6 +71,12 @@ nor operational status is confirmed. Do not create a conditional
 ticket. You may offer a DIFFERENT draft noting the uncertainty,
 but create it only after the user's explicit request.
 
+For questions about previous conversations, remembered actions,
+or saved language preferences, give only the requested information.
+Never mention tickets, ticket drafts, ticket preparation, or
+ticket requirements unless the user explicitly asks about tickets.
+This restriction applies in English, Kazakh, and Russian.
+Do not proactively offer ticket-related assistance in memory queries.
 Keep answers brief; cite the instruction ID when using instructions. """
 
 

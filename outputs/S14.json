@@ -21,12 +21,12 @@
     {
       "action": "process_start",
       "segment": 1,
-      "pid": 5352,
+      "pid": 26993,
       "events": 1
     },
     {
       "action": "process_exit",
-      "pid": 5352
+      "pid": 26993
     }
   ],
   "messages": [
@@ -36,7 +36,7 @@
       "profile": "recovery_outage",
       "mode": "real",
       "model": "gpt-4o-mini",
-      "final_reply": "The password recovery service is currently experiencing an outage and is unavailable. There is no known repair time for this issue.",
+      "final_reply": "The password recovery service is currently experiencing an outage and is unavailable. Unfortunately, there is no estimated repair time provided for this issue.",
       "ticket_files": [],
       "preferred_language": "not set",
       "loop_limit_hit": false,
@@ -69,7 +69,7 @@
                   "args": {
                     "service": "account_recovery"
                   },
-                  "id": "call_qwZRtnzsJvuHYBiIF5p1gom3"
+                  "id": "call_0SDWrbpWB7gwuCx7H83WGqG4"
                 }
               ]
             }
@@ -90,7 +90,7 @@
                 "profile": "recovery_outage",
                 "source": "data/service_status.json"
               },
-              "tool_call_id": "call_qwZRtnzsJvuHYBiIF5p1gom3"
+              "tool_call_id": "call_0SDWrbpWB7gwuCx7H83WGqG4"
             }
           ],
           "sources": [
@@ -105,12 +105,12 @@
           "messages_added": [
             {
               "type": "ai",
-              "content": "The password recovery service is currently experiencing an outage and is unavailable. There is no known repair time for this issue."
+              "content": "The password recovery service is currently experiencing an outage and is unavailable. Unfortunately, there is no estimated repair time provided for this issue."
             }
           ]
         }
       ],
-      "pid": 5352,
+      "pid": 26993,
       "published_ticket_files": []
     }
   ],
@@ -121,7 +121,7 @@
       "args": {
         "service": "account_recovery"
       },
-      "id": "call_qwZRtnzsJvuHYBiIF5p1gom3"
+      "id": "call_0SDWrbpWB7gwuCx7H83WGqG4"
     },
     {
       "event": "tool_returned",

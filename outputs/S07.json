@@ -21,12 +21,12 @@
     {
       "action": "process_start",
       "segment": 1,
-      "pid": 4998,
+      "pid": 26702,
       "events": 1
     },
     {
       "action": "process_exit",
-      "pid": 4998
+      "pid": 26702
     }
   ],
   "messages": [
@@ -36,7 +36,7 @@
       "profile": "wifi_outage",
       "mode": "real",
       "model": "gpt-4o-mini",
-      "final_reply": "The demo Wi-Fi service is currently experiencing an outage and is unavailable across campus. Unfortunately, I cannot prepare a ticket for this issue since the service is not operational. If you have any other questions or need assistance, feel free to ask!",
+      "final_reply": "The demo Wi-Fi service is currently experiencing an outage across campus, and there is no repair time available. Since the service is not operational, I cannot prepare a ticket for your issue. \n\nIf you have any other questions or need assistance, feel free to ask!",
       "ticket_files": [],
       "preferred_language": "not set",
       "loop_limit_hit": false,
@@ -69,7 +69,7 @@
                   "args": {
                     "service": "wifi"
                   },
-                  "id": "call_yqalEdzYSiOnCMbcIr37RQRJ"
+                  "id": "call_oDHFi9N3NYJTcWUHxbWMqz4C"
                 }
               ]
             }
@@ -90,7 +90,7 @@
                 "profile": "wifi_outage",
                 "source": "data/service_status.json"
               },
-              "tool_call_id": "call_yqalEdzYSiOnCMbcIr37RQRJ"
+              "tool_call_id": "call_oDHFi9N3NYJTcWUHxbWMqz4C"
             }
           ],
           "sources": [
@@ -105,12 +105,12 @@
           "messages_added": [
             {
               "type": "ai",
-              "content": "The demo Wi-Fi service is currently experiencing an outage and is unavailable across campus. Unfortunately, I cannot prepare a ticket for this issue since the service is not operational. If you have any other questions or need assistance, feel free to ask!"
+              "content": "The demo Wi-Fi service is currently experiencing an outage across campus, and there is no repair time available. Since the service is not operational, I cannot prepare a ticket for your issue. \n\nIf you have any other questions or need assistance, feel free to ask!"
             }
           ]
         }
       ],
-      "pid": 4998,
+      "pid": 26702,
       "published_ticket_files": []
     }
   ],
@@ -121,7 +121,7 @@
       "args": {
         "service": "wifi"
       },
-      "id": "call_yqalEdzYSiOnCMbcIr37RQRJ"
+      "id": "call_oDHFi9N3NYJTcWUHxbWMqz4C"
     },
     {
       "event": "tool_returned",
