@@ -1,0 +1,216 @@
+{
+  "scenario_id": "S12",
+  "title": "Preference across threads without replay",
+  "part": 3,
+  "status_profile": "normal",
+  "mode": "real",
+  "model_provider": "OpenAI",
+  "model_name": "gpt-4o-mini",
+  "original_events": [
+    {
+      "action": "message",
+      "user_id": "demo-user-a",
+      "thread_id": "preference-a1",
+      "message": "Please remember that I prefer replies in Kazakh. I have a Wi-Fi problem."
+    },
+    {
+      "action": "restart_process",
+      "preserve_local_storage": true
+    },
+    {
+      "action": "message",
+      "user_id": "demo-user-a",
+      "thread_id": "preference-a2",
+      "message": "Which language did I ask you to use? What can you help with?"
+    }
+  ],
+  "commands_executed": [
+    "/usr/bin/python3 -m helpdesk.cli batch --mode real --profile normal --storage /content/css4007-hw5-main/local-storage/scenario-runs/S12 --events-file /content/css4007-hw5-main/local-storage/scenario-runs/S12/segment_1.json",
+    "/usr/bin/python3 -m helpdesk.cli batch --mode real --profile normal --storage /content/css4007-hw5-main/local-storage/scenario-runs/S12 --events-file /content/css4007-hw5-main/local-storage/scenario-runs/S12/segment_2.json"
+  ],
+  "process_events": [
+    {
+      "action": "process_start",
+      "segment": 1,
+      "pid": 5237,
+      "events": 1
+    },
+    {
+      "action": "process_exit",
+      "pid": 5237
+    },
+    {
+      "action": "restart_process",
+      "method": "separate subprocess.run call",
+      "storage_preserved": true
+    },
+    {
+      "action": "process_start",
+      "segment": 2,
+      "pid": 5268,
+      "events": 1
+    },
+    {
+      "action": "process_exit",
+      "pid": 5268
+    }
+  ],
+  "messages": [
+    {
+      "user_id": "demo-user-a",
+      "thread_id": "preference-a1",
+      "profile": "normal",
+      "mode": "real",
+      "model": "gpt-4o-mini",
+      "final_reply": "Wi-Fi қызметі жұмыс істеп тұр. Енді сізге Wi-Fi мәселесін шешу үшін нұсқаулық қажет пе?",
+      "ticket_files": [],
+      "preferred_language": "Kazakh",
+      "loop_limit_hit": false,
+      "trace": [
+        {
+          "node": "INPUT",
+          "message": "Please remember that I prefer replies in Kazakh. I have a Wi-Fi problem.",
+          "previous_conversation_messages": 0,
+          "memory_source": "new_conversation"
+        },
+        {
+          "node": "load_user_memory",
+          "state_updates": {
+            "preferred_language": "Kazakh"
+          },
+          "memory_source": "preferences.sqlite / user_id=demo-user-a"
+        },
+        {
+          "node": "assistant",
+          "state_updates": {
+            "rounds": 1
+          },
+          "messages_added": [
+            {
+              "type": "ai",
+              "content": "Сіз Wi-Fi мәселесімен бетпе-бет келдіңіз. Мен Wi-Fi қызметінің статусын тексеремін. Бір сәт күтіңіз.",
+              "model_tool_requests": [
+                {
+                  "name": "check_service_status",
+                  "args": {
+                    "service": "wifi"
+                  },
+                  "id": "call_XySs1NPRtlWbHTHIDJGMiFx1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node": "tools",
+          "state_updates": {},
+          "messages_added": [
+            {
+              "type": "tool",
+              "content": "{\"service\": \"wifi\", \"status\": \"operational\", \"message\": \"The demo Wi-Fi service has no reported outage.\", \"profile\": \"normal\", \"source\": \"data/service_status.json\"}",
+              "tool_name": "check_service_status",
+              "tool_result": {
+                "service": "wifi",
+                "status": "operational",
+                "message": "The demo Wi-Fi service has no reported outage.",
+                "profile": "normal",
+                "source": "data/service_status.json"
+              },
+              "tool_call_id": "call_XySs1NPRtlWbHTHIDJGMiFx1"
+            }
+          ],
+          "sources": [
+            "data/service_status.json"
+          ]
+        },
+        {
+          "node": "assistant",
+          "state_updates": {
+            "rounds": 2
+          },
+          "messages_added": [
+            {
+              "type": "ai",
+              "content": "Wi-Fi қызметі жұмыс істеп тұр. Енді сізге Wi-Fi мәселесін шешу үшін нұсқаулық қажет пе?"
+            }
+          ]
+        }
+      ],
+      "pid": 5237,
+      "published_ticket_files": []
+    },
+    {
+      "user_id": "demo-user-a",
+      "thread_id": "preference-a2",
+      "profile": "normal",
+      "mode": "real",
+      "model": "gpt-4o-mini",
+      "final_reply": "Сіз мені қазақ тілінде жауап беруімді сұрадыңыз. Мен Wi-Fi, парольді қалпына келтіру, қызметтің күйін тексеру және жергілікті билет жобаларын жасау бойынша көмектесе аламын.",
+      "ticket_files": [],
+      "preferred_language": "Kazakh",
+      "loop_limit_hit": false,
+      "trace": [
+        {
+          "node": "INPUT",
+          "message": "Which language did I ask you to use? What can you help with?",
+          "previous_conversation_messages": 0,
+          "memory_source": "new_conversation"
+        },
+        {
+          "node": "load_user_memory",
+          "state_updates": {
+            "preferred_language": "Kazakh"
+          },
+          "memory_source": "preferences.sqlite / user_id=demo-user-a"
+        },
+        {
+          "node": "assistant",
+          "state_updates": {
+            "rounds": 1
+          },
+          "messages_added": [
+            {
+              "type": "ai",
+              "content": "Сіз мені қазақ тілінде жауап беруімді сұрадыңыз. Мен Wi-Fi, парольді қалпына келтіру, қызметтің күйін тексеру және жергілікті билет жобаларын жасау бойынша көмектесе аламын."
+            }
+          ]
+        }
+      ],
+      "pid": 5268,
+      "published_ticket_files": []
+    }
+  ],
+  "tool_call_and_result_sequence": [
+    {
+      "event": "model_requested",
+      "name": "check_service_status",
+      "args": {
+        "service": "wifi"
+      },
+      "id": "call_XySs1NPRtlWbHTHIDJGMiFx1"
+    },
+    {
+      "event": "tool_returned",
+      "name": "check_service_status",
+      "result": {
+        "service": "wifi",
+        "status": "operational",
+        "message": "The demo Wi-Fi service has no reported outage.",
+        "profile": "normal",
+        "source": "data/service_status.json"
+      }
+    }
+  ],
+  "evaluation": {
+    "passed": true,
+    "tool_results": [
+      "check_service_status"
+    ],
+    "observed_statuses": [
+      "operational"
+    ],
+    "ticket_count": 0,
+    "reason": "Automatic fixture check; inspect the replies and traces for content accuracy."
+  },
+  "loop_limit_reached": false
+}

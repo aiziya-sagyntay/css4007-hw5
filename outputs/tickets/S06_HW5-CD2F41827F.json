@@ -1,0 +1,17 @@
+{
+  "ticket_id": "HW5-CD2F41827F",
+  "status": "draft",
+  "user_id": "demo-user-a",
+  "thread_id": "s06",
+  "category": "wifi",
+  "summary": "I enabled Wi-Fi and forgot the saved network, but Campus-Demo still will not connect. Check whether Wi-Fi is down. If it is operating, prepare a ticket about this problem.",
+  "steps_tried": [
+    "Enabled Wi-Fi (user reported)",
+    "Forgot/removed the saved network (user reported)"
+  ],
+  "service_status": "operational",
+  "status_profile": "normal",
+  "reference_ids": [
+    "GUIDE-WIFI"
+  ]
+}

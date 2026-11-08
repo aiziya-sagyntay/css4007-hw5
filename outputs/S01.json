@@ -1,0 +1,124 @@
+{
+  "scenario_id": "S01",
+  "title": "Simple Wi-Fi route",
+  "part": 1,
+  "status_profile": "normal",
+  "mode": "real",
+  "model_provider": "no real LLM",
+  "model_name": "none",
+  "original_events": [
+    {
+      "action": "message",
+      "user_id": "demo-user-a",
+      "thread_id": "s01",
+      "message": "I cannot connect to Wi-Fi."
+    }
+  ],
+  "commands_executed": [
+    "python -m helpdesk.cli part1 --variant original --message \"I cannot connect to Wi-Fi.\""
+  ],
+  "process_events": [],
+  "messages": [
+    {
+      "user_id": "demo-user-a",
+      "thread_id": "s01",
+      "profile": "normal",
+      "mode": "no LLM",
+      "final_reply": "GUIDE-WIFI: Check that Wi-Fi is enabled and airplane mode is off. Select the fictional Campus-Demo network. If connection fails, forget the saved network and try connecting again. If the problem remains, check the service status before preparing a ticket.",
+      "route": [
+        "START",
+        "read_request",
+        "wifi_help",
+        "END"
+      ],
+      "state_after_each_node": [
+        {
+          "node": "START",
+          "state": {
+            "message": "I cannot connect to Wi-Fi."
+          }
+        },
+        {
+          "node": "read_request",
+          "update": {
+            "category": "wifi"
+          },
+          "state": {
+            "message": "I cannot connect to Wi-Fi.",
+            "category": "wifi"
+          }
+        },
+        {
+          "node": "wifi_help",
+          "update": {
+            "reply": "GUIDE-WIFI: Check that Wi-Fi is enabled and airplane mode is off. Select the fictional Campus-Demo network. If connection fails, forget the saved network and try connecting again. If the problem remains, check the service status before preparing a ticket."
+          },
+          "state": {
+            "message": "I cannot connect to Wi-Fi.",
+            "category": "wifi",
+            "reply": "GUIDE-WIFI: Check that Wi-Fi is enabled and airplane mode is off. Select the fictional Campus-Demo network. If connection fails, forget the saved network and try connecting again. If the problem remains, check the service status before preparing a ticket."
+          }
+        },
+        {
+          "node": "END",
+          "state": {
+            "message": "I cannot connect to Wi-Fi.",
+            "category": "wifi",
+            "reply": "GUIDE-WIFI: Check that Wi-Fi is enabled and airplane mode is off. Select the fictional Campus-Demo network. If connection fails, forget the saved network and try connecting again. If the problem remains, check the service status before preparing a ticket."
+          }
+        }
+      ],
+      "ticket_files": [],
+      "trace": [
+        {
+          "node": "START",
+          "state": {
+            "message": "I cannot connect to Wi-Fi."
+          }
+        },
+        {
+          "node": "read_request",
+          "update": {
+            "category": "wifi"
+          },
+          "state": {
+            "message": "I cannot connect to Wi-Fi.",
+            "category": "wifi"
+          }
+        },
+        {
+          "node": "wifi_help",
+          "update": {
+            "reply": "GUIDE-WIFI: Check that Wi-Fi is enabled and airplane mode is off. Select the fictional Campus-Demo network. If connection fails, forget the saved network and try connecting again. If the problem remains, check the service status before preparing a ticket."
+          },
+          "state": {
+            "message": "I cannot connect to Wi-Fi.",
+            "category": "wifi",
+            "reply": "GUIDE-WIFI: Check that Wi-Fi is enabled and airplane mode is off. Select the fictional Campus-Demo network. If connection fails, forget the saved network and try connecting again. If the problem remains, check the service status before preparing a ticket."
+          }
+        },
+        {
+          "node": "END",
+          "state": {
+            "message": "I cannot connect to Wi-Fi.",
+            "category": "wifi",
+            "reply": "GUIDE-WIFI: Check that Wi-Fi is enabled and airplane mode is off. Select the fictional Campus-Demo network. If connection fails, forget the saved network and try connecting again. If the problem remains, check the service status before preparing a ticket."
+          }
+        }
+      ],
+      "published_ticket_files": []
+    }
+  ],
+  "tool_call_and_result_sequence": [],
+  "evaluation": {
+    "passed": true,
+    "reason": "Deterministic graph executed",
+    "route": [
+      "START",
+      "read_request",
+      "wifi_help",
+      "END"
+    ]
+  },
+  "loop_limit_reached": false
+}

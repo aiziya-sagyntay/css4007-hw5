@@ -1,0 +1,124 @@
+{
+  "scenario_id": "S03",
+  "title": "Unsupported request",
+  "part": 1,
+  "status_profile": "normal",
+  "mode": "real",
+  "model_provider": "no real LLM",
+  "model_name": "none",
+  "original_events": [
+    {
+      "action": "message",
+      "user_id": "demo-user-a",
+      "thread_id": "s03",
+      "message": "My laptop screen is broken."
+    }
+  ],
+  "commands_executed": [
+    "python -m helpdesk.cli part1 --variant original --message \"My laptop screen is broken.\""
+  ],
+  "process_events": [],
+  "messages": [
+    {
+      "user_id": "demo-user-a",
+      "thread_id": "s03",
+      "profile": "normal",
+      "mode": "no LLM",
+      "final_reply": "Is your question about Wi-Fi or a password?",
+      "route": [
+        "START",
+        "read_request",
+        "other_help",
+        "END"
+      ],
+      "state_after_each_node": [
+        {
+          "node": "START",
+          "state": {
+            "message": "My laptop screen is broken."
+          }
+        },
+        {
+          "node": "read_request",
+          "update": {
+            "category": "other"
+          },
+          "state": {
+            "message": "My laptop screen is broken.",
+            "category": "other"
+          }
+        },
+        {
+          "node": "other_help",
+          "update": {
+            "reply": "Is your question about Wi-Fi or a password?"
+          },
+          "state": {
+            "message": "My laptop screen is broken.",
+            "category": "other",
+            "reply": "Is your question about Wi-Fi or a password?"
+          }
+        },
+        {
+          "node": "END",
+          "state": {
+            "message": "My laptop screen is broken.",
+            "category": "other",
+            "reply": "Is your question about Wi-Fi or a password?"
+          }
+        }
+      ],
+      "ticket_files": [],
+      "trace": [
+        {
+          "node": "START",
+          "state": {
+            "message": "My laptop screen is broken."
+          }
+        },
+        {
+          "node": "read_request",
+          "update": {
+            "category": "other"
+          },
+          "state": {
+            "message": "My laptop screen is broken.",
+            "category": "other"
+          }
+        },
+        {
+          "node": "other_help",
+          "update": {
+            "reply": "Is your question about Wi-Fi or a password?"
+          },
+          "state": {
+            "message": "My laptop screen is broken.",
+            "category": "other",
+            "reply": "Is your question about Wi-Fi or a password?"
+          }
+        },
+        {
+          "node": "END",
+          "state": {
+            "message": "My laptop screen is broken.",
+            "category": "other",
+            "reply": "Is your question about Wi-Fi or a password?"
+          }
+        }
+      ],
+      "published_ticket_files": []
+    }
+  ],
+  "tool_call_and_result_sequence": [],
+  "evaluation": {
+    "passed": true,
+    "reason": "Deterministic graph executed",
+    "route": [
+      "START",
+      "read_request",
+      "other_help",
+      "END"
+    ]
+  },
+  "loop_limit_reached": false
+}

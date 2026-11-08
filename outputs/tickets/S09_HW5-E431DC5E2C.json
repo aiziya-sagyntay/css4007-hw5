@@ -1,0 +1,17 @@
+{
+  "ticket_id": "HW5-E431DC5E2C",
+  "status": "draft",
+  "user_id": "demo-user-a",
+  "thread_id": "s09",
+  "category": "wifi",
+  "summary": "The issue is Wi-Fi. I enabled it and tried reconnecting, but it still fails.",
+  "steps_tried": [
+    "Enabled Wi-Fi (user reported)",
+    "Tried reconnecting (user reported)"
+  ],
+  "service_status": "operational",
+  "status_profile": "normal",
+  "reference_ids": [
+    "GUIDE-WIFI"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "scenario_id": "S05",
+  "title": "Two topics after adding clarification",
+  "part": 1,
+  "status_profile": "normal",
+  "mode": "real",
+  "model_provider": "no real LLM",
+  "model_name": "none",
+  "original_events": [
+    {
+      "action": "message",
+      "user_id": "demo-user-a",
+      "thread_id": "s05",
+      "message": "My Wi-Fi password does not work."
+    }
+  ],
+  "commands_executed": [
+    "python -m helpdesk.cli part1 --variant with_clarification --message \"My Wi-Fi password does not work.\""
+  ],
+  "process_events": [],
+  "messages": [
+    {
+      "user_id": "demo-user-a",
+      "thread_id": "s05",
+      "profile": "normal",
+      "mode": "no LLM",
+      "final_reply": "Is the issue connecting to Wi-Fi, or recovering an account password? Which should we solve first?",
+      "route": [
+        "START",
+        "read_request",
+        "clarify_problem",
+        "END"
+      ],
+      "state_after_each_node": [
+        {
+          "node": "START",
+          "state": {
+            "message": "My Wi-Fi password does not work."
+          }
+        },
+        {
+          "node": "read_request",
+          "update": {
+            "category": "both"
+          },
+          "state": {
+            "message": "My Wi-Fi password does not work.",
+            "category": "both"
+          }
+        },
+        {
+          "node": "clarify_problem",
+          "update": {
+            "reply": "Is the issue connecting to Wi-Fi, or recovering an account password? Which should we solve first?"
+          },
+          "state": {
+            "message": "My Wi-Fi password does not work.",
+            "category": "both",
+            "reply": "Is the issue connecting to Wi-Fi, or recovering an account password? Which should we solve first?"
+          }
+        },
+        {
+          "node": "END",
+          "state": {
+            "message": "My Wi-Fi password does not work.",
+            "category": "both",
+            "reply": "Is the issue connecting to Wi-Fi, or recovering an account password? Which should we solve first?"
+          }
+        }
+      ],
+      "ticket_files": [],
+      "trace": [
+        {
+          "node": "START",
+          "state": {
+            "message": "My Wi-Fi password does not work."
+          }
+        },
+        {
+          "node": "read_request",
+          "update": {
+            "category": "both"
+          },
+          "state": {
+            "message": "My Wi-Fi password does not work.",
+            "category": "both"
+          }
+        },
+        {
+          "node": "clarify_problem",
+          "update": {
+            "reply": "Is the issue connecting to Wi-Fi, or recovering an account password? Which should we solve first?"
+          },
+          "state": {
+            "message": "My Wi-Fi password does not work.",
+            "category": "both",
+            "reply": "Is the issue connecting to Wi-Fi, or recovering an account password? Which should we solve first?"
+          }
+        },
+        {
+          "node": "END",
+          "state": {
+            "message": "My Wi-Fi password does not work.",
+            "category": "both",
+            "reply": "Is the issue connecting to Wi-Fi, or recovering an account password? Which should we solve first?"
+          }
+        }
+      ],
+      "published_ticket_files": []
+    }
+  ],
+  "tool_call_and_result_sequence": [],
+  "evaluation": {
+    "passed": true,
+    "reason": "Deterministic graph executed",
+    "route": [
+      "START",
+      "read_request",
+      "clarify_problem",
+      "END"
+    ]
+  },
+  "loop_limit_reached": false
+}

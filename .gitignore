@@ -11,3 +11,5 @@ __pycache__/
 *.sqlite-*
 *.sqlite3-*
 local-storage/
+.ipynb_checkpoints/
+*.pyc
