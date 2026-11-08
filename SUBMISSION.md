@@ -93,7 +93,17 @@ On every turn the `load_user_memory` node reads preferences. User messages from 
 
 Looking up troubleshooting steps in `helpdesk.json` is **retrieval** from an external reference file. Remembering the user's preference is **user memory** persisted by user ID; conversation messages are **thread memory** persisted by the checkpointer. Neither reference retrieval nor user memory is supplied by another user's conversation.
 
-### Literal reference: `I already tried that`\n\nFirst prompt: I cannot connect to Wi-Fi. Find the local Wi-Fi instructions and recommend only the first step.\n\nFirst reply: To connect to the Wi-Fi, the first step is to **check that Wi-Fi is enabled and airplane mode is off**.\n\nLiteral follow-up: I already tried that.\n\nActual follow-up reply: Which step did you try after checking that Wi-Fi is enabled and airplane mode is off?\n\nPrior checkpoint messages: 4. Source: LangGraph SQLite thread memory; guide lookup: `data/helpdesk.json` (retrieval); language preference: `preferences.sqlite` (user memory). Raw evidence: `outputs/EXTRA_MEMORY_REFERENCE.json`.
+### Literal reference: `I already tried that`
+
+First prompt: I cannot connect to Wi-Fi. Find the local Wi-Fi instructions and recommend only the first step.
+
+First reply: To connect to the Wi-Fi, the first step is to **check that Wi-Fi is enabled and airplane mode is off**.
+
+Literal follow-up: I already tried that.
+
+Actual follow-up reply: Which step did you try after checking that Wi-Fi is enabled and airplane mode is off?
+
+Prior checkpoint messages: 4. Source: LangGraph SQLite thread memory; guide lookup: `data/helpdesk.json` (retrieval); language preference: `preferences.sqlite` (user memory). Raw evidence: `outputs/EXTRA_MEMORY_REFERENCE.json`.
 
 ## Part 4 — Reproduction, tests and CI
 

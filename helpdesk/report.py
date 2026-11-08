@@ -112,7 +112,7 @@ def generate_submission(mode: str = "real") -> str:
         else "fake/EXTRA_MEMORY_REFERENCE.json"
     )
     extra_section = (
-        "### Literal reference: `I already tried that`\\n\\n"
+        "### Literal reference: `I already tried that`\n\n"
         "Run `python -m helpdesk.extra_demo --mode real` "
         "to record this demonstration."
     )
@@ -120,11 +120,11 @@ def generate_submission(mode: str = "real") -> str:
         extra = json.loads(extra_path.read_text(encoding="utf-8"))
         first, second = extra["messages"]
         extra_section = (
-            "### Literal reference: `I already tried that`\\n\\n"
-            f"First prompt: {first['trace'][0]['message']}\\n\\n"
-            f"First reply: {first['final_reply']}\\n\\n"
-            f"Literal follow-up: {second['trace'][0]['message']}\\n\\n"
-            f"Actual follow-up reply: {second['final_reply']}\\n\\n"
+            "### Literal reference: `I already tried that`\n\n"
+            f"First prompt: {first['trace'][0]['message']}\n\n"
+            f"First reply: {first['final_reply']}\n\n"
+            f"Literal follow-up: {second['trace'][0]['message']}\n\n"
+            f"Actual follow-up reply: {second['final_reply']}\n\n"
             f"Prior checkpoint messages: "
             f"{second['trace'][0]['previous_conversation_messages']}. "
             "Source: LangGraph SQLite thread memory; "
