@@ -107,6 +107,32 @@ def generate_submission(mode: str = "real") -> str:
                          f"Full trace: `outputs/{'' if mode == 'real' else 'fake/'}{sid}.json`.")
         else:
             part2.append(f"- **{sid}:** Not run yet.")
+    extra_path = ROOT / "outputs" / (
+        "EXTRA_MEMORY_REFERENCE.json" if mode == "real"
+        else "fake/EXTRA_MEMORY_REFERENCE.json"
+    )
+    extra_section = (
+        "### Literal reference: `I already tried that`\\n\\n"
+        "Run `python -m helpdesk.extra_demo --mode real` "
+        "to record this demonstration."
+    )
+    if extra_path.exists():
+        extra = json.loads(extra_path.read_text(encoding="utf-8"))
+        first, second = extra["messages"]
+        extra_section = (
+            "### Literal reference: `I already tried that`\\n\\n"
+            f"First prompt: {first['trace'][0]['message']}\\n\\n"
+            f"First reply: {first['final_reply']}\\n\\n"
+            f"Literal follow-up: {second['trace'][0]['message']}\\n\\n"
+            f"Actual follow-up reply: {second['final_reply']}\\n\\n"
+            f"Prior checkpoint messages: "
+            f"{second['trace'][0]['previous_conversation_messages']}. "
+            "Source: LangGraph SQLite thread memory; "
+            "guide lookup: `data/helpdesk.json` (retrieval); "
+            "language preference: `preferences.sqlite` (user memory). "
+            "Raw evidence: `outputs/EXTRA_MEMORY_REFERENCE.json`."
+        )
+
     doc = f"""# HW5 — My LangGraph helpdesk
 
 **Course:** CSS4007 Artificial Intelligence  
@@ -166,6 +192,8 @@ On every turn the `load_user_memory` node reads preferences. User messages from 
 """ + "\n".join(memory_rows) + f"""
 
 Looking up troubleshooting steps in `helpdesk.json` is **retrieval** from an external reference file. Remembering the user's preference is **user memory** persisted by user ID; conversation messages are **thread memory** persisted by the checkpointer. Neither reference retrieval nor user memory is supplied by another user's conversation.
+
+{extra_section}
 
 ## Part 4 — Reproduction, tests and CI
 

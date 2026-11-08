@@ -49,6 +49,22 @@ class FakeToolModel:
         instruction_wanted = ("troubleshooting steps" in lower or "instructions" in lower
                               or "forgot my password" in lower)
 
+        if lower.strip().rstrip(".!?") == "i already tried that":
+            guide_seen = any(
+                isinstance(m, ToolMessage) and m.name == "find_instructions"
+                for m in messages[:pos]
+            )
+            if guide_seen:
+                return AIMessage(content=(
+                    "You refer to the earlier Wi-Fi instructions. "
+                    "Which specific suggested step did you try? "
+                    "I will not assume you tried them all."
+                ))
+            return AIMessage(content=(
+                "Which previous step do you mean? "
+                "Please clarify; I cannot assume what you tried."
+            ))
+
         if "which language" in lower or "preferred language" in lower:
             return AIMessage(content=("Сіз жауаптарды қазақ тілінде сұрадыңыз. Мен Wi-Fi, құпиясөзді қалпына келтіру, қызмет күйін тексеру және өтінім жобасын дайындауға көмектесемін."
                                       if kazakh else "You have not saved a preferred language for this user."))

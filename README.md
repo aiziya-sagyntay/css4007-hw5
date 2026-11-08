@@ -123,3 +123,20 @@ git add SUBMISSION.md outputs/S*.json; git commit -m "Document observed runs and
 ```
 
 Commit commands are examples; only commit a file after it exists. Do not commit API secrets or SQLite databases. Submit the link to your **public fork**; do not create a pull request against the instructor's starter.
+
+
+## Extra Part 3: literal contextual-memory demonstration
+
+```bash
+python -m helpdesk.extra_demo --mode real
+python -m helpdesk.cli report --mode real
+```
+
+The exact follow-up `I already tried that.` uses previous messages
+from the same conversation thread.
+
+Evidence: `outputs/EXTRA_MEMORY_REFERENCE.json`.
+
+Instructions in `data/helpdesk.json` are retrieval.
+SQLite checkpoints store conversation memory.
+`preferences.sqlite` stores user language preferences.
